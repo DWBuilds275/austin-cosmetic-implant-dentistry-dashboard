@@ -28,10 +28,12 @@ with col2:
     st.write("**📅 Audit Date:** September 3, 2026")
 st.markdown("---")
 
-# ALERT BOX - Corrected: 0% mention rate
-st.error(
-    "🚨 **0% MENTION RATE** — Your practice was NOT mentioned in any of the 40 AI queries "
-    "(across ChatGPT, Gemini, Perplexity, and Claude)."
+# ALERT BOX - 5% mention rate with incorrect NAP info
+st.warning(
+    "⚠️ **5% MENTION RATE** — Your practice was mentioned in only 2 of 40 AI queries "
+    "(across ChatGPT, Gemini, Perplexity, and Claude). Both mentions contained incorrect "
+    "information: **'Dr. Chhung'** instead of Dr. Chung, and **'Belterra area'** instead of "
+    "your actual address at 2828 Bransford Avenue."
 )
 
 st.markdown("---")
@@ -55,19 +57,20 @@ st.sidebar.markdown("---")
 st.sidebar.caption("🔒 Confidential - For Austin Cosmetic & Implant Dentistry Only")
 
 # --- VERIFIED DATA FROM AI QUERY AUDIT ---
-# Dr. Chung's practice: 0 mentions out of 40 queries
-# Competitors: verified counts from PDF audit data
+# Dr. Chung's practice: 2 mentions out of 40 queries (5%)
+# Both mentions had incorrect NAP information
 mention_rates = {
-    "Austin Cosmetic & Implant Dentistry": 0.00,  # 0/40 - NOT mentioned
+    "Austin Cosmetic & Implant Dentistry": 0.05,  # 2/40 - both with wrong name/location
     "Nuvia Dental Implant Center": 0.25,          # 10/40
     "Tech Ridge Dental": 0.23,                    # 9/40
     "Periodontal Surgical Arts": 0.15,            # 6/40
     "Austin Dental Implants": 0.13,               # 5/40
 }
 
-# NAP accuracy: not applicable since Dr. Chung's practice was never mentioned
+# NAP accuracy: whether the practice's name/address were cited correctly when mentioned.
+# Dr. Chung's practice had incorrect info both times it was mentioned
 nap_accuracy = {
-    "Austin Cosmetic & Implant Dentistry": "N/A (Not mentioned)",
+    "Austin Cosmetic & Implant Dentistry": "❌ Incorrect (wrong name & location both times)",
     "Nuvia Dental Implant Center": "✅ Correct",
     "Tech Ridge Dental": "✅ Correct",
     "Periodontal Surgical Arts": "✅ Correct",
@@ -75,7 +78,7 @@ nap_accuracy = {
 }
 
 historical_dates = [datetime.now() - timedelta(days=i) for i in range(7, -1, -1)]
-historical_mentions = [0.00] * 8  # All zeros
+historical_mentions = [0.05] * 8
 
 # --- MAIN DASHBOARD ---
 
@@ -84,16 +87,16 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.metric(
         label="📈 Mention Rate",
-        value="0%",
-        delta="0 out of 40 queries",
+        value="5%",
+        delta="2 out of 40 queries",
         delta_color="inverse"
     )
 
 with col2:
     st.metric(
         label="🎯 NAP Accuracy",
-        value="N/A",
-        delta="Not mentioned",
+        value="0%",
+        delta="Both mentions had wrong info",
         delta_color="inverse"
     )
 
@@ -108,7 +111,7 @@ with col3:
 with col4:
     st.metric(
         label="💸 Missed Revenue",
-        value="$8,750",
+        value="$7,000",
         delta="per 100 searches",
         delta_color="inverse"
     )
@@ -123,7 +126,7 @@ with col1:
     trend_df = pd.DataFrame({'Date': historical_dates, 'Mention Rate': historical_mentions})
     fig1 = px.line(
         trend_df, x='Date', y='Mention Rate',
-        title='AI Mention Rate Over Time — 0%',
+        title='AI Mention Rate Over Time — 5%',
         labels={'Mention Rate': 'Mention Rate', 'Date': 'Date'}
     )
     fig1.update_layout(yaxis_tickformat='.0%', yaxis_range=[0, 0.30], hovermode='x unified', showlegend=False)
@@ -161,13 +164,13 @@ st.markdown("---")
 
 # Actionable Fix Checklist
 st.subheader("✅ Actionable Fix Checklist")
-st.markdown("Based on your audit results (0% mention rate), here are the most effective fixes.")
+st.markdown("Based on your audit results (5% mention rate, with incorrect info both times), here are the most effective fixes.")
 
 st.markdown("### 🔴 High Priority (Do These First)")
 high_priority = [
+    "📝 **Fix NAP Consistency on ALL Directories** — Your practice was mentioned twice, but both times with incorrect information ('Dr. Chhung' instead of Dr. Chung, and 'Belterra area' instead of 2828 Bransford Avenue). This is the #1 issue to fix.",
     "📝 **Complete Google Business Profile Service Areas** — Set Austin, Dripping Springs, and Kyle as service areas. This directly feeds local AI Overviews, Maps, and voice search.",
     "🔍 **Add JSON-LD Structured Data (LocalBusiness/Dentist Schema)** — This removes ambiguity for AI crawlers. It doesn't guarantee citations, but it helps.",
-    "📊 **Ensure NAP Consistency on Third-Party Directories** — AI pulls from Healthgrades, Zocdoc, Yelp, and other sites. Check your listings there.",
     "📄 **Add a 'Direct-Answer' Content Block** — Write one paragraph on your site that plainly answers: 'Who is the best implant dentist in Austin, Dripping Springs, and Kyle?' AI often pulls this directly."
 ]
 for fix in high_priority:
@@ -193,27 +196,29 @@ for fix in low_priority:
 st.markdown("---")
 
 # What This Means Section
-st.subheader("📋 What This 0% Mention Rate Means")
+st.subheader("📋 What This 5% Mention Rate Means")
 
 col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("""
-    **🔍 Why You're Not Being Found:**
+    **🔍 Why You're Only at 5%:**
 
-    1. **Incomplete Google Business Profile** — AI systems draw on your GBP and other online listings. Missing information means you get skipped.
-    2. **Missing Structured Data** — AI can't easily understand your services without schema markup.
-    3. **Third-Party Directory Gaps** — AI pulls from Healthgrades, Zocdoc, Yelp, and others. Inconsistent listings create confusion.
-    4. **No Direct-Answer Content** — AI needs a clear, plain-language paragraph that answers "who is the best implant dentist in Austin?"
+    1. **Incorrect NAP Information** — Your practice was mentioned twice, but both times with wrong info:
+       - "Dr. Chhung" instead of Dr. Chung
+       - "Belterra area" instead of 2828 Bransford Avenue
+    2. **Incomplete Google Business Profile** — AI systems draw on your GBP and other online listings.
+    3. **Missing Structured Data** — AI can't easily understand your services without schema markup.
+    4. **Third-Party Directory Gaps** — AI pulls from Healthgrades, Zocdoc, Yelp, and others.
 
     **🚨 The Opportunity:**
     - Patients ask AI "Who is the best implant dentist in Austin?"
     - No competitor is dominating — the top practice is only mentioned 25% of the time.
-    - **You're missing an estimated $8,750 per 100 searches:**
+    - **You're missing an estimated $7,000 per 100 searches:**
 
     > 100 searches × 25% (top competitor rate) × $350 avg. appointment value = **$8,750** potential
-    > 100 searches × 0% (your current rate) × $350 = **$0** current
-    > **$8,750 − $0 = $8,750 missed**
+    > 100 searches × 5% (your current rate) × $350 = **$1,750** current
+    > **$8,750 − $1,750 = $7,000 missed**
     """)
 
 with col2:
@@ -223,9 +228,9 @@ with col2:
     These are the levers most directly tied to the audit findings above. We can't promise exact
     percentages, but each fix removes a specific, identified barrier.
 
-    1. **Complete Google Business Profile** — Removes a major visibility blocker
-    2. **Add Structured Data** — Helps AI understand your services
-    3. **Fix Third-Party Directories** — Consistent listings build trust signals
+    1. **Fix NAP Consistency** — Corrects the exact errors AI is currently citing about your practice
+    2. **Complete Google Business Profile** — Removes a major visibility blocker
+    3. **Add Structured Data** — Helps AI understand your services
     4. **Add Direct-Answer Content** — AI often pulls this directly into answers
 
     **🎯 Goal:**
@@ -245,7 +250,7 @@ with col1:
         st.success("✅ Report generated! Download the PDF below.")
 
 with col2:
-    # Generate a proper PDF report with data
+    # Generate a report with data
     report_data = f"""
 AI VISIBILITY REPORT
 Austin Cosmetic & Implant Dentistry
@@ -255,10 +260,10 @@ Audit Date: September 3, 2026
 KEY FINDINGS
 ========================================
 
-Mention Rate: 0% (0 out of 40 queries)
-NAP Accuracy: N/A (Not mentioned)
+Mention Rate: 5% (2 out of 40 queries)
+NAP Accuracy: 0% (Both mentions had wrong info)
 Competitor Rank: #5 of 5
-Missed Revenue: $8,750 per 100 searches
+Missed Revenue: $7,000 per 100 searches
 
 ========================================
 COMPETITOR COMPARISON
@@ -268,16 +273,26 @@ Nuvia Dental Implant Center: 25%
 Tech Ridge Dental: 23%
 Periodontal Surgical Arts: 15%
 Austin Dental Implants: 13%
-Austin Cosmetic & Implant Dentistry: 0%
+Austin Cosmetic & Implant Dentistry: 5%
+
+========================================
+NAP ACCURACY
+========================================
+
+Austin Cosmetic & Implant Dentistry: ❌ Incorrect (wrong name & location)
+Nuvia Dental Implant Center: ✅ Correct
+Tech Ridge Dental: ✅ Correct
+Periodontal Surgical Arts: ✅ Correct
+Austin Dental Implants: ✅ Correct
 
 ========================================
 RECOMMENDATIONS
 ========================================
 
 HIGH PRIORITY:
-1. Complete Google Business Profile Service Areas
-2. Add JSON-LD Structured Data
-3. Ensure NAP Consistency on Third-Party Directories
+1. Fix NAP Consistency on ALL Directories
+2. Complete Google Business Profile Service Areas
+3. Add JSON-LD Structured Data
 4. Add Direct-Answer Content Block
 
 MEDIUM PRIORITY:
@@ -294,8 +309,8 @@ MISSED REVENUE CALCULATION
 ========================================
 
 100 searches × 25% (top competitor) × $350 = $8,750 potential
-100 searches × 0% (your current rate) × $350 = $0 current
-$8,750 − $0 = $8,750 missed per 100 searches
+100 searches × 5% (your current rate) × $350 = $1,750 current
+$8,750 − $1,750 = $7,000 missed per 100 searches
 
 ========================================
 NEXT STEPS
@@ -335,9 +350,9 @@ Audit Date: September 3, 2026
 Please schedule a follow-up audit for 30 days from now.
 
 Current metrics:
-- Mention Rate: 0%
-- NAP Accuracy: N/A
-- Missed Revenue: $8,750 per 100 searches
+- Mention Rate: 5%
+- NAP Accuracy: 0%
+- Missed Revenue: $7,000 per 100 searches
 """
     
     mailto_link = f"mailto:dwilson@deltanodeadvisory.com?subject={email_subject.replace(' ', '%20')}&body={email_body.replace(' ', '%20').replace('\n', '%0A')}"
