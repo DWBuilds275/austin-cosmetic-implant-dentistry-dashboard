@@ -15,15 +15,15 @@ st.set_page_config(
 st.title("🦷 AI Visibility Dashboard")
 st.subheader("Austin Cosmetic & Implant Dentistry - Audit Findings")
 
-# Practice Information
+# Practice Information - UPDATED with correct address from website
 st.markdown("---")
 col1, col2 = st.columns(2)
 with col1:
     st.write("**🏛️ Practice:** Austin Cosmetic & Implant Dentistry")
     st.write("**👨‍⚕️ Doctor:** Dr. Madeleine Chung")
-    st.write("**📍 Location:** 2828 Bransford Avenue, Austin, TX 78704")
+    st.write("**📍 Location:** 13341 US Highway 290, Unit 1-107, Austin, TX 78737")
 with col2:
-    st.write("**📞 Phone:** (512) 900-5732")
+    st.write("**📞 Phone:** (512) 607-6880")
     st.write("**🌐 Website:** austintopdentist.com")
     st.write("**📅 Audit Date:** September 3, 2026")
 st.markdown("---")
@@ -33,7 +33,7 @@ st.warning(
     "⚠️ **5% MENTION RATE** — Your practice was mentioned in only 2 of 40 AI queries "
     "(across ChatGPT, Gemini, Perplexity, and Claude). Both mentions contained incorrect "
     "information: **'Dr. Chhung'** instead of Dr. Chung, and **'Belterra area'** instead of "
-    "your actual address at 2828 Bransford Avenue."
+    "your actual address at 13341 US Highway 290, Unit 1-107, Austin, TX 78737."
 )
 
 st.markdown("---")
@@ -44,8 +44,8 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("**Practice:** Austin Cosmetic & Implant Dentistry")
 st.sidebar.markdown("**Doctor:** Dr. Madeleine Chung")
 st.sidebar.markdown("**Location:** Austin, TX")
-st.sidebar.markdown("**Address:** 2828 Bransford Avenue")
-st.sidebar.markdown("**Phone:** (512) 900-5732")
+st.sidebar.markdown("**Address:** 13341 US Highway 290, Unit 1-107")
+st.sidebar.markdown("**Phone:** (512) 607-6880")
 st.sidebar.markdown("**Audit Date:** September 3, 2026")
 st.sidebar.markdown("**Queries Run:** 40 AI searches (10 prompts × 4 platforms)")
 st.sidebar.markdown("**AI Models:** ChatGPT, Gemini, Perplexity, Claude")
@@ -168,7 +168,7 @@ st.markdown("Based on your audit results (5% mention rate, with incorrect info b
 
 st.markdown("### 🔴 High Priority (Do These First)")
 high_priority = [
-    "📝 **Fix NAP Consistency on ALL Directories** — Your practice was mentioned twice, but both times with incorrect information ('Dr. Chhung' instead of Dr. Chung, and 'Belterra area' instead of 2828 Bransford Avenue). This is the #1 issue to fix.",
+    "📝 **Fix NAP Consistency on ALL Directories** — Your practice was mentioned twice, but both times with incorrect information ('Dr. Chhung' instead of Dr. Chung, and 'Belterra area' instead of 13341 US Highway 290, Unit 1-107). This is the #1 issue to fix.",
     "📝 **Complete Google Business Profile Service Areas** — Set Austin, Dripping Springs, and Kyle as service areas. This directly feeds local AI Overviews, Maps, and voice search.",
     "🔍 **Add JSON-LD Structured Data (LocalBusiness/Dentist Schema)** — This removes ambiguity for AI crawlers. It doesn't guarantee citations, but it helps.",
     "📄 **Add a 'Direct-Answer' Content Block** — Write one paragraph on your site that plainly answers: 'Who is the best implant dentist in Austin, Dripping Springs, and Kyle?' AI often pulls this directly."
@@ -206,7 +206,7 @@ with col1:
 
     1. **Incorrect NAP Information** — Your practice was mentioned twice, but both times with wrong info:
        - "Dr. Chhung" instead of Dr. Chung
-       - "Belterra area" instead of 2828 Bransford Avenue
+       - "Belterra area" instead of 13341 US Highway 290, Unit 1-107
     2. **Incomplete Google Business Profile** — AI systems draw on your GBP and other online listings.
     3. **Missing Structured Data** — AI can't easily understand your services without schema markup.
     4. **Third-Party Directory Gaps** — AI pulls from Healthgrades, Zocdoc, Yelp, and others.
@@ -267,6 +267,16 @@ Mention Rate: 5% (2 out of 40 queries)
 NAP Accuracy: 0% (Both mentions had wrong info)
 Competitor Rank: #5 of 5
 Missed Revenue: $90,000 per 100 searches
+
+========================================
+PRACTICE INFORMATION
+========================================
+
+Practice: Austin Cosmetic & Implant Dentistry
+Doctor: Dr. Madeleine Chung
+Address: 13341 US Highway 290, Unit 1-107, Austin, TX 78737
+Phone: (512) 607-6880
+Website: austintopdentist.com
 
 ========================================
 COMPETITOR COMPARISON
