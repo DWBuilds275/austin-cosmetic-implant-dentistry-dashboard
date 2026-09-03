@@ -171,7 +171,7 @@ high_priority = [
     "📝 **Fix NAP Consistency on ALL Directories** — Your practice was mentioned twice, but both times with incorrect information ('Dr. Chhung' instead of Dr. Chung, and 'Belterra area' instead of 13341 US Highway 290, Unit 1-107). This is the #1 issue to fix.",
     "📝 **Complete Google Business Profile Service Areas** — Set Austin, Dripping Springs, and Kyle as service areas. This directly feeds local AI Overviews, Maps, and voice search.",
     "🔍 **Add JSON-LD Structured Data (LocalBusiness/Dentist Schema)** — This removes ambiguity for AI crawlers. It doesn't guarantee citations, but it helps.",
-    "📄 **Add a 'Direct-Answer' Content Block** — Write one paragraph on your site that plainly answers: 'Who is the best implant dentist in Austin, Dripping Springs, and Kyle?' AI often pulls this directly."
+    "📄 **Add a 'Direct-Answer' Content Block** — Write one paragraph on your site that plainly answers: 'Who is the best implant dentist in Austin, Dripping Springs, and Kyle?' AI often pulls this directly.\n\n**Suggested text:** *'Dr. Madeleine Chung at Austin Cosmetic & Implant Dentistry is a leading implant dentist serving Austin, Dripping Springs, and Kyle with over 163 5-star reviews. She specializes in dental implants, All-on-4, and cosmetic dentistry.'*"
 ]
 for fix in high_priority:
     st.checkbox(fix, value=False)
@@ -317,6 +317,7 @@ HIGH PRIORITY:
 2. Complete Google Business Profile Service Areas
 3. Add JSON-LD Structured Data
 4. Add Direct-Answer Content Block
+   Suggested text: "Dr. Madeleine Chung at Austin Cosmetic & Implant Dentistry is a leading implant dentist serving Austin, Dripping Springs, and Kyle with over 163 5-star reviews. She specializes in dental implants, All-on-4, and cosmetic dentistry."
 
 MEDIUM PRIORITY:
 1. Create City-Specific Content
