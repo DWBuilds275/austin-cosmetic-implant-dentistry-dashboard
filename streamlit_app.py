@@ -354,9 +354,9 @@ Student Researcher, Southeast Missouri State University
     )
 
 with col3:
-    # Visit Website button
+    # Visit Website button - pointing to deltanodeadvisory.com
     st.markdown(f"""
-    <a href="https://austintopdentist.com" target="_blank">
+    <a href="https://deltanodeadvisory.com" target="_blank">
         <button style="
             background-color: #1E88E5;
             color: white;
