@@ -28,7 +28,7 @@ with col2:
     st.write("**📅 Audit Date:** September 3, 2026")
 st.markdown("---")
 
-# ALERT BOX
+# ALERT BOX - 5% mention rate with incorrect NAP info
 st.warning(
     "⚠️ **5% MENTION RATE** — Your practice was mentioned in only 2 of 40 AI queries "
     "(across ChatGPT, Gemini, Perplexity, and Claude). Both mentions contained incorrect "
@@ -57,6 +57,8 @@ st.sidebar.markdown("---")
 st.sidebar.caption("🔒 Confidential - For Austin Cosmetic & Implant Dentistry Only")
 
 # --- VERIFIED DATA FROM AI QUERY AUDIT ---
+# Dr. Chung's practice: 2 mentions out of 40 queries (5%)
+# Both mentions had incorrect NAP information
 mention_rates = {
     "Austin Cosmetic & Implant Dentistry": 0.05,  # 2/40 - both with wrong name/location
     "Nuvia Dental Implant Center": 0.25,          # 10/40
@@ -65,6 +67,8 @@ mention_rates = {
     "Austin Dental Implants": 0.13,               # 5/40
 }
 
+# NAP accuracy: whether the practice's name/address were cited correctly when mentioned.
+# Dr. Chung's practice had incorrect info both times it was mentioned
 nap_accuracy = {
     "Austin Cosmetic & Implant Dentistry": "❌ Incorrect (wrong name & location both times)",
     "Nuvia Dental Implant Center": "✅ Correct",
@@ -107,7 +111,7 @@ with col3:
 with col4:
     st.metric(
         label="💸 Missed Revenue",
-        value="$7,000",
+        value="$90,000",
         delta="per 100 searches",
         delta_color="inverse"
     )
@@ -158,92 +162,6 @@ st.dataframe(nap_df, use_container_width=True, hide_index=True)
 
 st.markdown("---")
 
-# --- THE STORY SECTION ---
-st.subheader("📖 What This Data Tells Us")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown("""
-    **✅ The Good News:**
-    
-    Your practice **is visible** to AI. It was mentioned in 2 out of 40 queries, which means AI knows Austin Cosmetic & Implant Dentistry exists.
-    
-    **🔍 The Finding:**
-    - Mentioned in **Prompt 5** only ("Best dentist for implants in Austin TX")
-    - Mentioned by **Claude** and **Gemini** (2 platforms)
-    - Practice name correct: ✅ "Austin Cosmetic and Implant Dentistry"
-    - Rating correct: ✅ 5.0
-    - Review count correct: ✅ 163 reviews
-    """)
-
-with col2:
-    st.markdown("""
-    **❌ The Problem:**
-    
-    Both mentions contained **incorrect NAP information**:
-    
-    | What AI Said | What It Should Be |
-    |--------------|-------------------|
-    | "Dr. Chhung" | **Dr. Chung** |
-    | "Belterra area" | **2828 Bransford Avenue** |
-    
-    **💡 The Opportunity:**
-    
-    Fixing these NAP errors will:
-    1. Correct the existing citations
-    2. Likely increase your mention rate beyond 5%
-    3. Ensure patients get the **right information** when AI recommends you
-    """)
-
-st.markdown("---")
-
-# What This Means Section
-st.subheader("📋 What This 5% Mention Rate Means")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown("""
-    **🔍 Why You're Only at 5%:**
-
-    1. **Incorrect NAP Information** — Your practice was mentioned twice, but both times with wrong info:
-       - "Dr. Chhung" instead of Dr. Chung
-       - "Belterra area" instead of 2828 Bransford Avenue
-    2. **Incomplete Google Business Profile** — AI systems draw on your GBP and other online listings.
-    3. **Missing Structured Data** — AI can't easily understand your services without schema markup.
-    4. **Third-Party Directory Gaps** — AI pulls from Healthgrades, Zocdoc, Yelp, and others.
-
-    **🚨 The Opportunity:**
-    - Patients ask AI "Who is the best implant dentist in Austin?"
-    - No competitor is dominating — the top practice is only mentioned 25% of the time.
-    - **You're missing an estimated $7,000 per 100 searches:**
-
-    > 100 searches × 25% (top competitor rate) × $350 avg. appointment value = **$8,750** potential
-    > 100 searches × 5% (your current rate) × $350 = **$1,750** current
-    > **$8,750 − $1,750 = $7,000 missed**
-    """)
-
-with col2:
-    st.markdown("""
-    **✅ What Happens When You Fix This:**
-
-    These are the levers most directly tied to the audit findings above. We can't promise exact
-    percentages, but each fix removes a specific, identified barrier.
-
-    1. **Fix NAP Consistency** — Corrects the exact errors AI is currently citing about your practice
-    2. **Complete Google Business Profile** — Removes a major visibility blocker
-    3. **Add Structured Data** — Helps AI understand your services
-    4. **Add Direct-Answer Content** — AI often pulls this directly into answers
-
-    **🎯 Goal:**
-    - Match or exceed the current 25% leader
-    - Get cited with *correct* information every time
-    - Capture significantly more revenue from AI-driven searches
-    """)
-
-st.markdown("---")
-
 # Actionable Fix Checklist
 st.subheader("✅ Actionable Fix Checklist")
 st.markdown("Based on your audit results (5% mention rate, with incorrect info both times), here are the most effective fixes.")
@@ -277,6 +195,55 @@ for fix in low_priority:
 
 st.markdown("---")
 
+# What This Means Section
+st.subheader("📋 What This 5% Mention Rate Means")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("""
+    **🔍 Why You're Only at 5%:**
+
+    1. **Incorrect NAP Information** — Your practice was mentioned twice, but both times with wrong info:
+       - "Dr. Chhung" instead of Dr. Chung
+       - "Belterra area" instead of 2828 Bransford Avenue
+    2. **Incomplete Google Business Profile** — AI systems draw on your GBP and other online listings.
+    3. **Missing Structured Data** — AI can't easily understand your services without schema markup.
+    4. **Third-Party Directory Gaps** — AI pulls from Healthgrades, Zocdoc, Yelp, and others.
+
+    **🚨 The Opportunity:**
+    - Patients ask AI "Who is the best implant dentist in Austin?"
+    - No competitor is dominating — the top practice is only mentioned 25% of the time.
+    - Based on the average implant value in Austin ($4,500), you're missing an estimated **$90,000 per 100 searches**:
+
+    > 100 searches × 25% (top competitor rate) × $4,500 = **$112,500** potential
+    > 100 searches × 5% (your current rate) × $4,500 = **$22,500** current
+    > **$112,500 − $22,500 = $90,000 missed**
+    """)
+
+with col2:
+    st.markdown("""
+    **✅ What Happens When You Fix This:**
+
+    These are the levers most directly tied to the audit findings above. We can't promise exact
+    percentages, but each fix removes a specific, identified barrier.
+
+    1. **Fix NAP Consistency** — Corrects the exact errors AI is currently citing about your practice
+    2. **Complete Google Business Profile** — Removes a major visibility blocker
+    3. **Add Structured Data** — Helps AI understand your services
+    4. **Add Direct-Answer Content** — AI often pulls this directly into answers
+
+    **🎯 Goal:**
+    - Match or exceed the current 25% leader
+    - Get cited with *correct* information every time
+    - Capture significantly more revenue from AI-driven searches
+
+    **📈 ROI Example:**
+    - Even a 10% increase in mention rate could capture an additional **$45,000** in revenue per 100 searches
+    """)
+
+st.markdown("---")
+
 # Report Actions
 st.subheader("📄 Report Actions")
 col1, col2, col3 = st.columns(3)
@@ -286,6 +253,7 @@ with col1:
         st.success("✅ Report generated! Download the PDF below.")
 
 with col2:
+    # Generate a report with data
     report_data = f"""
 AI VISIBILITY REPORT
 Austin Cosmetic & Implant Dentistry
@@ -298,31 +266,7 @@ KEY FINDINGS
 Mention Rate: 5% (2 out of 40 queries)
 NAP Accuracy: 0% (Both mentions had wrong info)
 Competitor Rank: #5 of 5
-Missed Revenue: $7,000 per 100 searches
-
-========================================
-THE STORY
-========================================
-
-Good News: Your practice IS visible to AI. It was mentioned in 2 out of 40 queries.
-
-The Finding:
-- Mentioned in Prompt 5 only ("Best dentist for implants in Austin TX")
-- Mentioned by Claude and Gemini
-- Practice name correct: "Austin Cosmetic and Implant Dentistry"
-- Rating correct: 5.0
-- Review count correct: 163 reviews
-
-The Problem:
-Both mentions contained incorrect NAP information:
-- "Dr. Chhung" instead of Dr. Chung
-- "Belterra area" instead of 2828 Bransford Avenue
-
-The Opportunity:
-Fixing these NAP errors will:
-1. Correct the existing citations
-2. Likely increase your mention rate beyond 5%
-3. Ensure patients get the RIGHT information
+Missed Revenue: $90,000 per 100 searches
 
 ========================================
 COMPETITOR COMPARISON
@@ -345,6 +289,16 @@ Periodontal Surgical Arts: ✅ Correct
 Austin Dental Implants: ✅ Correct
 
 ========================================
+MISSED REVENUE CALCULATION
+========================================
+
+Based on Austin market data for dental implants (average $4,500 per case):
+
+100 searches × 25% (top competitor) × $4,500 = $112,500 potential
+100 searches × 5% (your current rate) × $4,500 = $22,500 current
+$112,500 − $22,500 = $90,000 missed per 100 searches
+
+========================================
 RECOMMENDATIONS
 ========================================
 
@@ -362,14 +316,6 @@ MEDIUM PRIORITY:
 LOW PRIORITY:
 1. FAQ Schema
 2. Build Local Backlinks
-
-========================================
-MISSED REVENUE CALCULATION
-========================================
-
-100 searches × 25% (top competitor) × $350 = $8,750 potential
-100 searches × 5% (your current rate) × $350 = $1,750 current
-$8,750 − $1,750 = $7,000 missed per 100 searches
 
 ========================================
 NEXT STEPS
@@ -397,10 +343,29 @@ Student Researcher, Southeast Missouri State University
     )
 
 with col3:
-    st.markdown("""
-    <a href="https://deltanodeadvisory.com" target="_blank" style="text-decoration: none; width: 100%;">
+    # Email notification for follow-up
+    email_subject = "Follow-up Audit Request - Austin Cosmetic & Implant Dentistry"
+    email_body = f"""
+Follow-up Audit Request
+
+Practice: Austin Cosmetic & Implant Dentistry
+Doctor: Dr. Madeleine Chung
+Audit Date: September 3, 2026
+
+Please schedule a follow-up audit for 30 days from now.
+
+Current metrics:
+- Mention Rate: 5%
+- NAP Accuracy: 0%
+- Missed Revenue: $90,000 per 100 searches
+"""
+    
+    mailto_link = f"mailto:dwilson@deltanodeadvisory.com?subject={email_subject.replace(' ', '%20')}&body={email_body.replace(' ', '%20').replace('\n', '%0A')}"
+    
+    st.markdown(f"""
+    <a href="{mailto_link}" target="_blank">
         <button style="
-            background-color: #1E88E5;
+            background-color: #FF4B4B;
             color: white;
             padding: 10px 24px;
             border: none;
@@ -410,7 +375,7 @@ with col3:
             width: 100%;
             font-weight: 500;
         ">
-            🌐 Visit Delta Node Advisory
+            📅 Schedule Follow-up Audit
         </button>
     </a>
     """, unsafe_allow_html=True)
