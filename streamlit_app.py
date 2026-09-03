@@ -397,40 +397,39 @@ Student Researcher, Southeast Missouri State University
     )
 
 with col3:
-    email_subject = "Follow-up Audit Request - Austin Cosmetic & Implant Dentistry"
-    email_body = f"""
-Follow-up Audit Request
-
-Practice: Austin Cosmetic & Implant Dentistry
-Doctor: Dr. Madeleine Chung
-Audit Date: September 3, 2026
-
-Please schedule a follow-up audit for 30 days from now.
-
-Current metrics:
-- Mention Rate: 5%
-- NAP Accuracy: 0%
-- Missed Revenue: $7,000 per 100 searches
-"""
-    
-    mailto_link = f"mailto:dwilson@deltanodeadvisory.com?subject={email_subject.replace(' ', '%20')}&body={email_body.replace(' ', '%20').replace('\n', '%0A')}"
-    
-    st.markdown(f"""
-    <a href="{mailto_link}" target="_blank">
-        <button style="
-            background-color: #FF4B4B;
-            color: white;
-            padding: 10px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-            font-weight: 500;
-        ">
-            📅 Schedule Follow-up Audit
-        </button>
-    </a>
+    st.markdown("""
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="mailto:dwilson@deltanodeadvisory.com?subject=Follow-up Audit Request - Austin Cosmetic &amp; Implant Dentistry&body=Dear Daniel,%0D%0A%0D%0AI would like to schedule a follow-up audit for my practice.%0D%0A%0D%0APractice: Austin Cosmetic &amp; Implant Dentistry%0D%0ADoctor: Dr. Madeleine Chung%0D%0AAudit Date: September 3, 2026%0D%0A%0D%0ACurrent metrics:%0D%0A- Mention Rate: 5%%0D%0A- NAP Accuracy: 0%%0D%0A- Missed Revenue: $7,000 per 100 searches%0D%0A%0D%0APlease let me know your availability.%0D%0A%0D%0ABest regards," target="_blank" style="text-decoration: none; width: 100%;">
+            <button style="
+                background-color: #FF4B4B;
+                color: white;
+                padding: 10px 24px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                width: 100%;
+                font-weight: 500;
+            ">
+                📅 Email to Schedule
+            </button>
+        </a>
+        <a href="https://deltanodeadvisory.com" target="_blank" style="text-decoration: none; width: 100%;">
+            <button style="
+                background-color: #1E88E5;
+                color: white;
+                padding: 10px 24px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                width: 100%;
+                font-weight: 500;
+            ">
+                🌐 Visit Delta Node Advisory
+            </button>
+        </a>
+    </div>
     """, unsafe_allow_html=True)
 
 st.markdown("---")
