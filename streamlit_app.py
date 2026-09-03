@@ -332,8 +332,8 @@ LOW PRIORITY:
 NEXT STEPS
 ========================================
 
-1. Schedule follow-up audit for 30 days from now
-2. Implement high-priority fixes
+1. Implement high-priority fixes
+2. Schedule follow-up audit for 30 days from now
 3. Track mention rate improvement
 
 ========================================
@@ -354,29 +354,11 @@ Student Researcher, Southeast Missouri State University
     )
 
 with col3:
-    # Email notification for follow-up
-    email_subject = "Follow-up Audit Request - Austin Cosmetic & Implant Dentistry"
-    email_body = f"""
-Follow-up Audit Request
-
-Practice: Austin Cosmetic & Implant Dentistry
-Doctor: Dr. Madeleine Chung
-Audit Date: September 3, 2026
-
-Please schedule a follow-up audit for 30 days from now.
-
-Current metrics:
-- Mention Rate: 5%
-- NAP Accuracy: 0%
-- Missed Revenue: $90,000 per 100 searches
-"""
-    
-    mailto_link = f"mailto:dwilson@deltanodeadvisory.com?subject={email_subject.replace(' ', '%20')}&body={email_body.replace(' ', '%20').replace('\n', '%0A')}"
-    
+    # Visit Website button
     st.markdown(f"""
-    <a href="{mailto_link}" target="_blank">
+    <a href="https://austintopdentist.com" target="_blank">
         <button style="
-            background-color: #FF4B4B;
+            background-color: #1E88E5;
             color: white;
             padding: 10px 24px;
             border: none;
@@ -386,7 +368,7 @@ Current metrics:
             width: 100%;
             font-weight: 500;
         ">
-            📅 Schedule Follow-up Audit
+            🌐 Visit Website
         </button>
     </a>
     """, unsafe_allow_html=True)
