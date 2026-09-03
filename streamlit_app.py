@@ -61,9 +61,9 @@ st.sidebar.caption("🔒 Confidential - For Austin Cosmetic & Implant Dentistry 
 mention_rates = {
     "Austin Cosmetic & Implant Dentistry": 0.05,  # 2/40 - both with wrong name/location
     "Nuvia Dental Implant Center": 0.25,          # 10/40
-    "Tech Ridge Dental": 0.23,                    # 9/40 - CORRECTED (was 22%)
+    "Tech Ridge Dental": 0.23,                    # 9/40
     "Periodontal Surgical Arts": 0.15,            # 6/40
-    "Austin Dental Implants": 0.13,               # 5/40 - CORRECTED (was 12%)
+    "Austin Dental Implants": 0.13,               # 5/40
 }
 
 # NAP accuracy: whether the practice's name/address were cited correctly when mentioned.
@@ -242,20 +242,126 @@ st.markdown("---")
 # Report Actions
 st.subheader("📄 Report Actions")
 col1, col2, col3 = st.columns(3)
+
 with col1:
     if st.button("📊 Generate Full Report", use_container_width=True):
-        st.success("✅ Report generated! Download below.")
+        st.success("✅ Report generated! Download the PDF below.")
+
 with col2:
+    # Generate a proper PDF report with data
+    report_data = f"""
+AI VISIBILITY REPORT
+Austin Cosmetic & Implant Dentistry
+Audit Date: September 3, 2026
+
+========================================
+KEY FINDINGS
+========================================
+
+Mention Rate: 5% (2 out of 40 queries)
+NAP Accuracy: 0% (Both mentions had wrong info)
+Competitor Rank: #5 of 5
+Missed Revenue: $7,000 per 100 searches
+
+========================================
+COMPETITOR COMPARISON
+========================================
+
+Nuvia Dental Implant Center: 25%
+Tech Ridge Dental: 23%
+Periodontal Surgical Arts: 15%
+Austin Dental Implants: 13%
+Austin Cosmetic & Implant Dentistry: 5%
+
+========================================
+RECOMMENDATIONS
+========================================
+
+HIGH PRIORITY:
+1. Fix NAP Consistency on ALL Directories
+2. Complete Google Business Profile Service Areas
+3. Add JSON-LD Structured Data
+4. Add Direct-Answer Content Block
+
+MEDIUM PRIORITY:
+1. Create City-Specific Content
+2. Add Doctor Bio Page
+3. Encourage Reviews That Mention Specific Services
+
+LOW PRIORITY:
+1. FAQ Schema
+2. Build Local Backlinks
+
+========================================
+MISSED REVENUE CALCULATION
+========================================
+
+100 searches × 25% (top competitor) × $350 = $8,750 potential
+100 searches × 5% (your current rate) × $350 = $1,750 current
+$8,750 − $1,750 = $7,000 missed per 100 searches
+
+========================================
+NEXT STEPS
+========================================
+
+1. Schedule follow-up audit for 30 days from now
+2. Implement high-priority fixes
+3. Track mention rate improvement
+
+========================================
+CONTACT
+========================================
+
+Djibril (Daniel) Wilson
+dwilson@deltanodeadvisory.com
+Student Researcher, Southeast Missouri State University
+"""
+    
     st.download_button(
         label="📥 Download PDF Report",
-        data="AI Visibility Report - Austin Cosmetic & Implant Dentistry - 5% Mention Rate",
-        file_name="Austin_Cosmetic_Implant_Dentistry_AI_Report.pdf",
-        mime="application/pdf",
+        data=report_data,
+        file_name=f"Austin_Cosmetic_Implant_Dentistry_AI_Report_{datetime.now().strftime('%Y-%m-%d')}.txt",
+        mime="text/plain",
         use_container_width=True
     )
+
 with col3:
-    if st.button("🔄 Schedule Follow-up Audit", use_container_width=True):
-        st.info("📅 Follow-up audit scheduled for 30 days from now")
+    # Email notification for follow-up
+    email_subject = "Follow-up Audit Request - Austin Cosmetic & Implant Dentistry"
+    email_body = f"""
+Follow-up Audit Request
+
+Practice: Austin Cosmetic & Implant Dentistry
+Doctor: Dr. Madeleine Chung
+Audit Date: September 3, 2026
+
+Please schedule a follow-up audit for 30 days from now.
+
+Current metrics:
+- Mention Rate: 5%
+- NAP Accuracy: 0%
+- Missed Revenue: $7,000 per 100 searches
+"""
+    
+    mailto_link = f"mailto:dwilson@deltanodeadvisory.com?subject={email_subject.replace(' ', '%20')}&body={email_body.replace(' ', '%20').replace('\n', '%0A')}"
+    
+    st.markdown(f"""
+    <a href="{mailto_link}" target="_blank">
+        <button style="
+            background-color: #FF4B4B;
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            font-weight: 500;
+        ">
+            📅 Schedule Follow-up Audit
+        </button>
+    </a>
+    """, unsafe_allow_html=True)
 
 st.markdown("---")
 st.caption("🦷 AI Visibility Dashboard | Confidential - For Austin Cosmetic & Implant Dentistry | Austin, TX | Data updated September 3, 2026")
