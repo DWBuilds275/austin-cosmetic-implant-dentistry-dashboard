@@ -28,7 +28,7 @@ with col2:
     st.write("**📅 Audit Date:** September 3, 2026")
 st.markdown("---")
 
-# ALERT BOX - 5% mention rate with incorrect NAP info
+# ALERT BOX
 st.warning(
     "⚠️ **5% MENTION RATE** — Your practice was mentioned in only 2 of 40 AI queries "
     "(across ChatGPT, Gemini, Perplexity, and Claude). Both mentions contained incorrect "
@@ -57,8 +57,6 @@ st.sidebar.markdown("---")
 st.sidebar.caption("🔒 Confidential - For Austin Cosmetic & Implant Dentistry Only")
 
 # --- VERIFIED DATA FROM AI QUERY AUDIT ---
-# Dr. Chung's practice: 2 mentions out of 40 queries (5%)
-# Both mentions had incorrect NAP information
 mention_rates = {
     "Austin Cosmetic & Implant Dentistry": 0.05,  # 2/40 - both with wrong name/location
     "Nuvia Dental Implant Center": 0.25,          # 10/40
@@ -67,8 +65,6 @@ mention_rates = {
     "Austin Dental Implants": 0.13,               # 5/40
 }
 
-# NAP accuracy: whether the practice's name/address were cited correctly when mentioned.
-# Dr. Chung's practice had incorrect info both times it was mentioned
 nap_accuracy = {
     "Austin Cosmetic & Implant Dentistry": "❌ Incorrect (wrong name & location both times)",
     "Nuvia Dental Implant Center": "✅ Correct",
@@ -162,36 +158,43 @@ st.dataframe(nap_df, use_container_width=True, hide_index=True)
 
 st.markdown("---")
 
-# Actionable Fix Checklist
-st.subheader("✅ Actionable Fix Checklist")
-st.markdown("Based on your audit results (5% mention rate, with incorrect info both times), here are the most effective fixes.")
+# --- THE STORY SECTION ---
+st.subheader("📖 What This Data Tells Us")
 
-st.markdown("### 🔴 High Priority (Do These First)")
-high_priority = [
-    "📝 **Fix NAP Consistency on ALL Directories** — Your practice was mentioned twice, but both times with incorrect information ('Dr. Chhung' instead of Dr. Chung, and 'Belterra area' instead of 2828 Bransford Avenue). This is the #1 issue to fix.",
-    "📝 **Complete Google Business Profile Service Areas** — Set Austin, Dripping Springs, and Kyle as service areas. This directly feeds local AI Overviews, Maps, and voice search.",
-    "🔍 **Add JSON-LD Structured Data (LocalBusiness/Dentist Schema)** — This removes ambiguity for AI crawlers. It doesn't guarantee citations, but it helps.",
-    "📄 **Add a 'Direct-Answer' Content Block** — Write one paragraph on your site that plainly answers: 'Who is the best implant dentist in Austin, Dripping Springs, and Kyle?' AI often pulls this directly."
-]
-for fix in high_priority:
-    st.checkbox(fix, value=False)
+col1, col2 = st.columns(2)
 
-st.markdown("### 🟡 Medium Priority (Build On This)")
-medium_priority = [
-    "📝 **Create City-Specific Content** — If you create pages for each city, make sure they have genuinely distinct content (local landmarks, patient stories, drive-time details). Avoid simply swapping city names.",
-    "👩‍⚕️ **Add a Doctor Bio Page** — Include Dr. Chung's full credentials, education, years of experience, and certifications. AI uses authority/trust signals.",
-    "⭐ **Encourage Reviews That Mention Specific Services** — Ask patients to share *what they had done and how it went*. City context often appears naturally. Avoid scripting specific keywords.",
-]
-for fix in medium_priority:
-    st.checkbox(fix, value=False)
+with col1:
+    st.markdown("""
+    **✅ The Good News:**
+    
+    Your practice **is visible** to AI. It was mentioned in 2 out of 40 queries, which means AI knows Austin Cosmetic & Implant Dentistry exists.
+    
+    **🔍 The Finding:**
+    - Mentioned in **Prompt 5** only ("Best dentist for implants in Austin TX")
+    - Mentioned by **Claude** and **Gemini** (2 platforms)
+    - Practice name correct: ✅ "Austin Cosmetic and Implant Dentistry"
+    - Rating correct: ✅ 5.0
+    - Review count correct: ✅ 163 reviews
+    """)
 
-st.markdown("### 🟢 Low Priority (Nice to Have)")
-low_priority = [
-    "📰 **FAQ Schema** — Can help structure content for AI parsing, but Google restricted FAQ rich snippets in 2023. Don't expect featured snippets.",
-    "📊 **Build Local Backlinks** — Get mentioned in local Austin business directories, news sites, and community pages.",
-]
-for fix in low_priority:
-    st.checkbox(fix, value=False)
+with col2:
+    st.markdown("""
+    **❌ The Problem:**
+    
+    Both mentions contained **incorrect NAP information**:
+    
+    | What AI Said | What It Should Be |
+    |--------------|-------------------|
+    | "Dr. Chhung" | **Dr. Chung** |
+    | "Belterra area" | **2828 Bransford Avenue** |
+    
+    **💡 The Opportunity:**
+    
+    Fixing these NAP errors will:
+    1. Correct the existing citations
+    2. Likely increase your mention rate beyond 5%
+    3. Ensure patients get the **right information** when AI recommends you
+    """)
 
 st.markdown("---")
 
@@ -241,6 +244,39 @@ with col2:
 
 st.markdown("---")
 
+# Actionable Fix Checklist
+st.subheader("✅ Actionable Fix Checklist")
+st.markdown("Based on your audit results (5% mention rate, with incorrect info both times), here are the most effective fixes.")
+
+st.markdown("### 🔴 High Priority (Do These First)")
+high_priority = [
+    "📝 **Fix NAP Consistency on ALL Directories** — Your practice was mentioned twice, but both times with incorrect information ('Dr. Chhung' instead of Dr. Chung, and 'Belterra area' instead of 2828 Bransford Avenue). This is the #1 issue to fix.",
+    "📝 **Complete Google Business Profile Service Areas** — Set Austin, Dripping Springs, and Kyle as service areas. This directly feeds local AI Overviews, Maps, and voice search.",
+    "🔍 **Add JSON-LD Structured Data (LocalBusiness/Dentist Schema)** — This removes ambiguity for AI crawlers. It doesn't guarantee citations, but it helps.",
+    "📄 **Add a 'Direct-Answer' Content Block** — Write one paragraph on your site that plainly answers: 'Who is the best implant dentist in Austin, Dripping Springs, and Kyle?' AI often pulls this directly."
+]
+for fix in high_priority:
+    st.checkbox(fix, value=False)
+
+st.markdown("### 🟡 Medium Priority (Build On This)")
+medium_priority = [
+    "📝 **Create City-Specific Content** — If you create pages for each city, make sure they have genuinely distinct content (local landmarks, patient stories, drive-time details). Avoid simply swapping city names.",
+    "👩‍⚕️ **Add a Doctor Bio Page** — Include Dr. Chung's full credentials, education, years of experience, and certifications. AI uses authority/trust signals.",
+    "⭐ **Encourage Reviews That Mention Specific Services** — Ask patients to share *what they had done and how it went*. City context often appears naturally. Avoid scripting specific keywords.",
+]
+for fix in medium_priority:
+    st.checkbox(fix, value=False)
+
+st.markdown("### 🟢 Low Priority (Nice to Have)")
+low_priority = [
+    "📰 **FAQ Schema** — Can help structure content for AI parsing, but Google restricted FAQ rich snippets in 2023. Don't expect featured snippets.",
+    "📊 **Build Local Backlinks** — Get mentioned in local Austin business directories, news sites, and community pages.",
+]
+for fix in low_priority:
+    st.checkbox(fix, value=False)
+
+st.markdown("---")
+
 # Report Actions
 st.subheader("📄 Report Actions")
 col1, col2, col3 = st.columns(3)
@@ -250,7 +286,6 @@ with col1:
         st.success("✅ Report generated! Download the PDF below.")
 
 with col2:
-    # Generate a report with data
     report_data = f"""
 AI VISIBILITY REPORT
 Austin Cosmetic & Implant Dentistry
@@ -264,6 +299,30 @@ Mention Rate: 5% (2 out of 40 queries)
 NAP Accuracy: 0% (Both mentions had wrong info)
 Competitor Rank: #5 of 5
 Missed Revenue: $7,000 per 100 searches
+
+========================================
+THE STORY
+========================================
+
+Good News: Your practice IS visible to AI. It was mentioned in 2 out of 40 queries.
+
+The Finding:
+- Mentioned in Prompt 5 only ("Best dentist for implants in Austin TX")
+- Mentioned by Claude and Gemini
+- Practice name correct: "Austin Cosmetic and Implant Dentistry"
+- Rating correct: 5.0
+- Review count correct: 163 reviews
+
+The Problem:
+Both mentions contained incorrect NAP information:
+- "Dr. Chhung" instead of Dr. Chung
+- "Belterra area" instead of 2828 Bransford Avenue
+
+The Opportunity:
+Fixing these NAP errors will:
+1. Correct the existing citations
+2. Likely increase your mention rate beyond 5%
+3. Ensure patients get the RIGHT information
 
 ========================================
 COMPETITOR COMPARISON
@@ -338,7 +397,6 @@ Student Researcher, Southeast Missouri State University
     )
 
 with col3:
-    # Email notification for follow-up
     email_subject = "Follow-up Audit Request - Austin Cosmetic & Implant Dentistry"
     email_body = f"""
 Follow-up Audit Request
